@@ -1,0 +1,43 @@
+# Hallazgos y Conclusiones del Ejercicio de Automatización
+
+## Hallazgos
+
+1. **Eficiencia de la Automatización**:
+   - El flujo de compra en la página de Demoblaze fue automatizado con éxito utilizando Selenium y Cucumber. La implementación del proyecto permite realizar pruebas funcionales end-to-end de manera eficiente y repetitiva, lo que reduce significativamente el tiempo necesario para ejecutar pruebas manuales.
+   - La estructura modular del proyecto facilita la reutilización del código y permite una fácil expansión de las pruebas. Cada página del sitio web está representada por una clase específica (`HomePage.java`, `CartPage.java`, `CheckoutPage.java`), lo que hace que la lógica de negocio esté separada de la lógica de las pruebas.
+
+2. **Robustez del Código**:
+   - El uso de `WebDriverWait` en las clases de página asegura que los elementos de la página estén completamente cargados antes de intentar interactuar con ellos. Esto reduce las posibilidades de que las pruebas fallen debido a condiciones de carrera o a la carga lenta de la página.
+   - La clase `BaseTest` proporciona métodos reutilizables para interactuar con los elementos de la página web, lo que centraliza la lógica de las interacciones y hace que el código sea más fácil de mantener y modificar.
+
+3. **Captura de Errores y Reportes**:
+   - La integración de Extent Reports permite una generación detallada de informes de ejecución de pruebas. Estos informes no solo muestran el estado de las pruebas (éxito/fallo), sino que también incluyen capturas de pantalla de los pasos donde ocurrió un error, lo que facilita la identificación de problemas.
+   - El método `captureScreenshot` en la clase `BaseTest` es crucial para capturar el estado de la aplicación en caso de fallos, lo que añade un valor significativo al proceso de depuración.
+
+4. **Configuración del WebDriver**:
+   - La configuración del WebDriver en la clase `BaseTest` es flexible, permitiendo la ejecución de pruebas en diferentes navegadores (Chrome, Firefox, Edge) simplemente cambiando una variable. Esta capacidad es vital para realizar pruebas de compatibilidad entre navegadores.
+
+5. **Desafíos Técnicos**:
+   - Durante la configuración del proyecto, fue necesario ajustar el path del WebDriver y asegurarse de que todas las dependencias estaban correctamente configuradas. Este proceso requirió un esfuerzo adicional para asegurar que el entorno de ejecución era el adecuado.
+   - El manejo de elementos dinámicos en la página web, como alertas y ventanas emergentes, fue un desafío, pero fue solucionado mediante el uso adecuado de métodos de espera explícita (`WebDriverWait`).
+
+## Conclusiones
+
+1. **Adaptabilidad y Escalabilidad**:
+   - La estructura del proyecto es altamente escalable. Nuevas funcionalidades de la página web de Demoblaze pueden ser fácilmente incorporadas en las pruebas existentes agregando nuevos métodos a las clases de página o creando nuevas clases de página si es necesario.
+   - El diseño modular del proyecto permite a diferentes miembros del equipo de desarrollo y pruebas trabajar de manera independiente en diferentes partes del proyecto, mejorando la productividad y reduciendo el tiempo de desarrollo.
+
+2. **Mejora Continua**:
+   - La implementación actual proporciona una base sólida para la automatización de pruebas, pero existen oportunidades para mejorar. Por ejemplo, la inclusión de pruebas de regresión automatizadas y la ejecución de pruebas en entornos CI/CD podrían fortalecer aún más la calidad del software.
+   - La captura de errores y la generación de informes podrían mejorarse aún más integrando más detalles sobre las fallas específicas y su contexto, lo que permitiría una depuración más rápida y precisa.
+
+3. **Recomendaciones**:
+   - Se recomienda mantener el proyecto actualizado con las últimas versiones de Selenium y Cucumber para aprovechar las mejoras en rendimiento y funcionalidad que estas herramientas ofrecen.
+   - Considerar la integración con herramientas de orquestación de pruebas como Jenkins o GitLab CI/CD para ejecutar las pruebas automáticamente en cada commit, asegurando así una validación continua del código.
+   - Incluir más escenarios de prueba en el archivo `compra.feature`, como compras fallidas o compras con diferentes métodos de pago, para aumentar la cobertura de pruebas.
+
+4. **Impacto en el Proyecto**:
+   - Este proyecto de automatización mejora significativamente la confiabilidad del proceso de pruebas. La posibilidad de detectar errores tempranamente en el ciclo de desarrollo reduce los costos de corrección y mejora la calidad final del producto.
+   - La documentación clara y las pruebas bien estructuradas facilitan el mantenimiento del proyecto y la incorporación de nuevos miembros al equipo de desarrollo y pruebas.
+
+Estas conclusiones reflejan el estado actual del proyecto de automatización y proporcionan una guía para futuras mejoras. El proyecto ha demostrado ser un ejemplo eficaz de cómo las pruebas automatizadas pueden integrarse en el flujo de trabajo de desarrollo para asegurar la calidad y estabilidad del software.

@@ -1,0 +1,40 @@
+plugins {
+    id 'java'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Selenium dependencies
+    implementation 'org.seleniumhq.selenium:selenium-java:4.4.0'
+    implementation 'org.seleniumhq.selenium:selenium-chrome-driver:4.4.0'
+
+    // Cucumber dependencies
+    testImplementation 'io.cucumber:cucumber-java:6.10.4'
+    testImplementation 'io.cucumber:cucumber-junit:6.10.4'
+
+    // JUnit dependency
+    testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+
+    // Extent Reports dependencies
+    implementation 'com.aventstack:extentreports:5.0.9'
+    implementation 'org.slf4j:slf4j-simple:1.7.32'
+    implementation 'org.slf4j:slf4j-api:1.7.32'
+}
+
+test {
+    useJUnitPlatform()
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+}
+
+task cucumberTest(type: Test) {
+    useJUnitPlatform()
+     include '**/runners/TestRunner.class' 
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+}
